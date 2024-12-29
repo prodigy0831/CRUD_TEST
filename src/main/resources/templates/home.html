@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>SPRING_CRUD_프로젝트</h1>
+
+<!-- 게시판 이동 링크 -->
+<a href="#" th:href="@{/board}">게시판으로 이동하기</a>
+
+<!-- 로그인되지 않은 경우 -->
+<div th:if="${loginMember == null}">
+    <a href="#" th:href="@{/createMember}">회원가입</a>
+    <a href="#" th:href="@{/login}">로그인</a>
+</div>
+
+<!-- 로그인된 경우 -->
+<div th:if="${loginMember != null}">
+    <div th:text="'사용자 : ' + ${loginMember.username}"></div>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">로그아웃</button>
+    </form>
+</div>
+</body>
+</html>
